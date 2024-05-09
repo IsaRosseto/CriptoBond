@@ -29,4 +29,5 @@ CriptoBond é mais do que uma simples plataforma de negociação de criptomoedas
 Se você tiver alguma dúvida, sugestão ou apenas quiser dizer oi, entre em contato conosco! Estamos aqui para ajudar.
 
 📧 E-mail: isabellavs.rosseto@gmail.com
+
 📧 E-mail: gustavo.bertoluzzi@hotmail.com

@@ -30,4 +30,4 @@ Se você tiver alguma dúvida, sugestão ou apenas quiser dizer oi, entre em con
 
 📧 E-mail: isabellavs.rosseto@gmail.com
 
-📧 E-mail: gustavo.bertoluzzi@hotmail.com
+📧 E-mail: gustavobertoluzzi@hotmail.com

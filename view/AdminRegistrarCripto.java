@@ -8,10 +8,13 @@ public class AdminRegistrarCripto extends JFrame {
     private JTextField nameField;
     private JTextField quotationField;
     private JButton registerButton;
+    private JTextField taxaCField;
+    private JTextField taxaVField;
+    
 
     public AdminRegistrarCripto() {
         setTitle("Registrar Nova Criptomoeda");
-        setSize(300, 200);
+        setSize(300, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -46,6 +49,35 @@ public class AdminRegistrarCripto extends JFrame {
         quotationField.setBorder(BorderFactory.createLineBorder(new Color(255, 204, 0), 1));
         panel.add(quotationField);
 
+        
+        
+        JLabel taxaCLabel = new JLabel("Taxa de Compra:");
+        taxaCLabel.setForeground(new Color(255, 204, 0));
+        taxaCLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+        panel.add(taxaCLabel);
+        
+        taxaCField = new JTextField(15);
+        taxaCField.setBackground(Color.BLACK);
+        taxaCField.setForeground(Color.WHITE);
+        taxaCField.setCaretColor(Color.WHITE);
+        taxaCField.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        taxaCField.setBorder(BorderFactory.createLineBorder(new Color(255, 204, 0), 1));
+        panel.add(taxaCField);
+        
+        
+        JLabel taxaVLabel = new JLabel("Taxa de Venda:");
+        taxaVLabel.setForeground(new Color(255, 204, 0));
+        taxaVLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+        panel.add(taxaVLabel);
+        
+        taxaVField = new JTextField(15);
+        taxaVField.setBackground(Color.BLACK);
+        taxaVField.setForeground(Color.WHITE);
+        taxaVField.setCaretColor(Color.WHITE);
+        taxaVField.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        taxaVField.setBorder(BorderFactory.createLineBorder(new Color(255, 204, 0), 1));
+        panel.add(taxaVField);
+        
         registerButton = new JButton("Cadastrar");
         registerButton.setBackground(Color.BLACK);
         registerButton.setForeground(Color.WHITE);

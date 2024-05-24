@@ -1,24 +1,25 @@
 package view;
 
-import DAO.UsuarioDAO;
-import model.Usuario;
+import DAO.AdministradorDAO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TelaLogin extends JFrame {
+public class AdminLogin extends JFrame {
     private JTextField cpfField;
     private JPasswordField passwordField;
     private JButton loginButton;
-    private UsuarioDAO usuarioDAO;
+    private AdministradorDAO administradorDAO;
 
-    public TelaLogin() {
-        this.usuarioDAO = new UsuarioDAO();
+    public AdminLogin() {
+        this.administradorDAO = new AdministradorDAO();
         initialize();
     }
 
     private void initialize() {
-        setTitle("Login");
+        setTitle("Login - Administrador");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
@@ -29,7 +30,7 @@ public class TelaLogin extends JFrame {
         topPanel.setBackground(Color.BLACK);
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JLabel titleLabel = new JLabel("CriptoBond - Login", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("CriptoBond - Administrador", SwingConstants.CENTER);
         titleLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
         titleLabel.setForeground(new Color(255, 204, 0));
         topPanel.add(titleLabel, BorderLayout.CENTER);
@@ -64,23 +65,25 @@ public class TelaLogin extends JFrame {
         loginButton.setBorder(BorderFactory.createLineBorder(new Color(255, 204, 0), 2));
         centerPanel.add(loginButton);
 
-        // Adicionar ação para o botão de login
-        loginButton.addActionListener(e -> handleLogin());
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleAdminLogin();
+            }
+        });
     }
 
-    private void handleLogin() {
+    private void handleAdminLogin() {
         String cpf = cpfField.getText();
         String senha = new String(passwordField.getPassword());
 
-        Usuario usuario = usuarioDAO.getUsuarioByCpfESenha(cpf, senha);
-        if (usuario != null) {
-            JOptionPane.showMessageDialog(this, "Login bem-sucedido!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            // Abrir a tela principal ou redirecionar para outra funcionalidade
-            TelaMenu telaMenu = new TelaMenu(usuario);
-            telaMenu.setVisible(true);
-            dispose(); // Fecha a tela de login
+        if (administradorDAO.verificarCredenciais(cpf, senha)) {
+            JOptionPane.showMessageDialog(this, "Login de administrador bem-sucedido!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+            dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Por favor, tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "CPF ou Senha incorretos. Por favor, tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }
